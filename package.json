@@ -1,0 +1,28 @@
+{
+  "name": "ihelp",
+  "private": true,
+  "proxy": "https://app.ihelp.finance",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 8005",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "antd": "^4.18.8",
+    "base-64": "^1.0.0",
+    "commafy": "^0.0.6",
+    "gsap": "^3.8.0",
+    "http-proxy-middleware": "^2.0.1",
+    "jquery": "^3.6.0",
+    "next": "12.0.3",
+    "react": "17.0.2",
+    "react-css-theme-switcher": "^0.3.0",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1"
+  },
+  "devDependencies": {
+    "eslint": "7",
+    "eslint-config-next": "12.0.3"
+  }
+}

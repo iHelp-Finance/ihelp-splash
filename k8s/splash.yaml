@@ -1,0 +1,129 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: ihelp-splash-router
+    namespace: ihelp-splash
+spec:
+    type: LoadBalancer
+    selector:
+        app: router
+    ports:
+    - name: "main"
+      nodePort: 30001
+      port: 30001
+      targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ihelp-splash-client
+  namespace: ihelp-splash
+spec:
+  ports:
+  - name: client-port
+    protocol: "TCP"
+    port: 8005
+    targetPort: 8005
+  selector:
+    app: client
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ihelp-splash-router
+  namespace: ihelp-splash
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: router
+  template:
+    metadata:
+      labels:
+        app: router
+    spec:
+      containers:
+      - name: router
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: ihelp-files
+          mountPath: /etc/nginx/nginx.conf
+          subPath: ihelp-splash/nginx/nginx.conf
+        - name: ihelp-files
+          mountPath: /etc/nginx/.htpasswd
+          subPath: ihelp-splash/nginx/.htpasswd
+      volumes:
+      - name: ihelp-files
+        persistentVolumeClaim:
+          claimName: ihelp-splash-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ihelp-splash-client
+  namespace: ihelp-splash
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - name: client
+        image: node:12
+        ports:
+        - containerPort: 8005
+        command: ["npm"]
+        args: ["start"]
+        env:
+        - name: PORT
+          value: "8005"
+        workingDir: /core
+        volumeMounts:
+        - name: ihelp-files
+          mountPath: /core
+          subPath: ihelp-splash
+      volumes:
+      - name: ihelp-files
+        persistentVolumeClaim:
+          claimName: ihelp-splash-pvc
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ihelp-splash-pv
+  namespace: ihelp-splash
+  labels:
+    dir: ihelp
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - nfsvers=4.1
+  nfs:
+    path: /core/ihelp
+    server: 208.59.77.70
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ihelp-splash-pvc
+  namespace: ihelp-splash
+spec:
+  selector:
+    matchLabels:
+      dir: ihelp
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

@@ -1,0 +1,13 @@
+
+kubectl create -f splash.yaml 
+
+kubectl replace --force -f splash.yaml
+
+kubectl delete all --all -n "ihelp-splash"
+
+kubectl create -f runCollect.yaml
+kubectl create -f runUpkeep.yaml
+
+kubectl delete pod collect-run -n ihelp
+kubectl delete pod upkeep-run -n ihelp
+
