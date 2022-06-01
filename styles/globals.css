@@ -41,9 +41,12 @@ button {
   font-size: 1.65rem;
   color: var(--white);
   background: var(--grd);
-  padding: 0.85rem 2.25rem;
-  border-radius: 0.5rem;
+  padding: 1.6rem 3.2rem;
   transition: 0.5s;
+
+  font-weight: 700;
+  background: #5C0FC5;
+  border-radius: 2.8rem;
 }
 .grd-btn:hover {
   box-shadow: 0 3px 5px rgba(172, 82, 242, 0.5);
@@ -54,10 +57,11 @@ button {
   position: relative;
 }
 .mainHeading {
-  font-size: 2.75rem;
+  font-size: 3.6rem;
   font-weight: 700;
-  color: var(--light-purple);
-  margin: 0 0 3.5rem 0;
+  color: #262626;
+  margin: 0 0 1.6rem 0;
+  text-align: center;
 }
 .section {
   width: 100%;
@@ -71,11 +75,13 @@ button {
   position: sticky;
   top: 0;
   z-index: 1000;
+
+  background: #FFFFFF;
+  box-shadow: 0 6px 12px rgba(38, 38, 38, 0.1);
 }
 .headerContent img {
-  height: 50%;
+  width: 18.6rem;
   object-fit: contain;
-  margin: 0 2.5rem 0 0;
   cursor: pointer;
 }
 .headerContent {
@@ -83,24 +89,26 @@ button {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 7.5rem;
+padding: 1.6rem;
 }
 .headerRight {
   display: flex;
   flex: 1;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .headerRight a {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--black);
-  font-weight: 600;
+  font-weight: 500;
+  margin-right: 7rem;
+  text-transform: uppercase;
+}
+.headerRight a:last-child{
+  margin-right: 0;
 }
 .headerRight a:hover {
   color: var(--light-purple);
-}
-.headerRight > * {
-  margin: 0 0 0 3.5rem;
 }
 .headerRight svg {
   font-size: 2.25rem;
@@ -115,7 +123,7 @@ button {
   background: transparent;
   border: 1px solid var(--light-purple);
 }
-.body-bgc {
+/*.body-bgc {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -125,7 +133,7 @@ button {
   left: 50%;
   z-index: -1;
   transform: translate(-50%, -50%) scale(2.5);
-}
+}*/
 /* Roadmap */
 
 .roadmap-content {
@@ -133,10 +141,11 @@ button {
   position: relative;
   margin: 0 auto;
 }
+
 .road-map-line {
   width: 0.25rem;
   height: 100%;
-  background: var(--dark-purple);
+  background: #D6C2F2;
   position: absolute;
   top: 0;
   left: 50%;
@@ -164,7 +173,7 @@ button {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: var(--grd);
+  background: #F0E6FA;
   padding: 2.5rem;
   border-radius: 1rem;
   color: var(--white);
@@ -175,29 +184,36 @@ button {
   margin: 0.65rem 0;
 }
 .roadmap-text-box h6 {
-  font-size: 1.7rem;
-  font-weight: 700;
-  margin: 0 0 1.25rem 0;
+  font-weight: 500;
+  font-size: 3.6rem;
+  color: #5C0FC5;
+
+}
+.roadmap-text-box ul{
+  padding-left: 2.5rem;
+  margin-top: 1.6rem;
+}
+.roadmap-text-box li{
+  margin-bottom: 1.2rem;
 }
 .roadmap-circle {
-  min-width: 6.5rem;
-  min-height: 6.5rem;
+  min-width: 3.1rem;
+  min-height: 3.1rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--grd);
-  font-size: 3rem;
+  background: #D6C2F2;
+/*  font-size: 3rem;
   color: var(--white);
   font-weight: 600;
   position: relative;
-  z-index: 100;
+  z-index: 100;*/
 }
 .roadmap-box-left .roadmap-circle {
-  transform: translate(3.25rem, 0);
-}
+  transform: translate(1.45rem, 0);}
 .roadmap-box-right .roadmap-circle {
-  transform: translate(-3.25rem, 0);
+  transform: translate(-1.45rem, 0);
 }
 .rotate {
   transform: rotate(180deg);

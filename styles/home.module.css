@@ -26,15 +26,14 @@ background-color: #dde8f2aa;
 }
 
 .heroContent {
-  width: 75%;
-  height: calc(100vh - 7.5rem);
+  width: max-content;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 6rem auto 13rem;
   text-align: center;
-  margin-top:-10%;
 }
 
 .heroContent h1 {
@@ -57,12 +56,11 @@ background-color: #dde8f2aa;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 7.5rem;
-  margin-top:-20%;
 }
 
 .infoGridContent main {
   width: 100%;
-  padding: 3.5rem 0;
+  padding: 2rem 2.4rem;
   /*border-top: 1px solid var(--black);
   border-bottom: 1px solid var(--black);*/
   display: flex;
@@ -70,6 +68,10 @@ background-color: #dde8f2aa;
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  background: #FFFFFF;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.16);
+  border-radius: 16px;
 }
 
 .infoGridContent main img {
@@ -95,18 +97,28 @@ background-color: #dde8f2aa;
 }
 
 .howItWorksGrid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-gap: 5rem;
+max-width: 107rem;
+  margin: auto;
 }
 
-.howItWorksGrid main {
-  font-size: 1.75rem;
-  color: var(--black);
+.howItWorksGrid p {
+  font-weight: 400;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #262626;
+margin-bottom: 2rem;
 }
-
+.howItWorksGrid p:last-child {
+margin-bottom: 0;
+}
+.headTxt{
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    text-align: center;
+    color: #262626;
+  margin-bottom: 1.2rem;
+}
 .howItWorksContent video {
   width: 100%;
   object-fit: cover;
@@ -114,7 +126,10 @@ background-color: #dde8f2aa;
   height: 85vh;
   margin: 5rem 0 0 0;
 }
-
+.donations{
+margin: 1.6rem auto 10rem;
+  display: flex;
+}
 /* Why */
 
 .why {
@@ -162,8 +177,28 @@ background-color: #dde8f2aa;
 
 .whyContent {
   margin: 0 0 5rem 0;
+  padding: 0 11.5rem;
 }
+.whyContent > p{
+  text-align: center;
+  margin: 1.2rem 0 1.6rem;
+}
+.whyContent div{
+  display: flex;
+  justify-content: space-between;
+}
+.whyContent ul{
+  width: 47%;
+}
+.whyContent ul li{
+margin-bottom: 1.6rem}
+ .txt{
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  color: #262626;
 
+}
 .charitiesGrid {
   width: 100%;
   display: grid;
