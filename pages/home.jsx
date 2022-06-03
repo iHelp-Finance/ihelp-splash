@@ -374,7 +374,7 @@ const Home = () => {
                     </main>
 
                 </div>
-{/*                <div style={{
+                {/*                <div style={{
                     position: 'relative',
                     fontSize: '16px',
                     fontStyle: 'italic',
@@ -453,7 +453,8 @@ const Home = () => {
                     <h1 className="mainHeading">Charities</h1>
                     <h2 className={st.headTxt}>Sustainable + Recurring Donations</h2>
                     <div className={st.whyContent}>
-                        <p className={st.txt}>IHELP makes it easy for you to fundraise from crypto donors. The protocol is great for donors and easy to use for charities:
+                        <p className={st.txt}>IHELP makes it easy for you to fundraise from crypto donors. The protocol
+                            is great for donors and easy to use for charities:
                         </p>
                         <div>
                             <ul>
@@ -646,10 +647,21 @@ const Home = () => {
             <div className={st.footer}>
                 <div className="box">
                     <div className={st.footerContent}>
-                        <div className={st.footerLeft}>
-                            <a href="https://turbinex.io" target="_blank" style={{fontWeight: '', fontSize: '16px'}}>©
-                                2022 Turbine X, LLC</a>
-                        </div>
+                        <ul className={st.footerLeft}>
+                            <a href="https://turbinex.io" target="_blank"
+                               style={{fontWeight: '', fontSize: '16px'}}>
+                                © 2022 Turbine X, LLC
+                            </a>
+                            <li>
+                                <a href="#">Charity Login</a>
+                            </li>
+                            <li>
+                                <a href="#">Status</a>
+                            </li>
+                            <li>
+                                <a href="#">Status</a>
+                            </li>
+                        </ul>
                         <div className={st.footerRight}>
                             <a href="https://discord.gg/qXKE27dZVb" target="_blank">
                                 <FaDiscord/>

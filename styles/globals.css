@@ -226,6 +226,12 @@ padding: 1.6rem;
   display: none;
 }
 @media screen and (max-width: 1200px) {
+  .header{
+    display: none;
+  }
+  .roadmap-content{
+    width: 100%;
+  }
   .headerRight > * {
     margin: 0 0 0 1.5rem;
   }
@@ -238,105 +244,26 @@ padding: 1.6rem;
   .mainHeading {
     margin: 0 0 2.5rem 0;
   }
-  .road-map-line {
-    left: 0;
-    transform: translate(0, 0);
-  }
-  .roadmap-box-content {
-    width: 100%;
-  }
-  .roadmap-box-left .roadmap-box-content {
-    flex-direction: row-reverse;
+  .roadmap-circle{
+    min-width:2rem;
+    min-height:2rem;
   }
   .roadmap-box-left .roadmap-circle {
-    transform: translate(-3.25rem, 0);
+    transform: translate(1rem, 0);
   }
-}
-@media screen and (max-width: 800px) {
-  .headerRight a {
-    display: none;
-  }
-  .roadmap-content {
-    width: 100%;
-  }
-  .roadmap-circle {
-    min-width: 5rem;
-    min-height: 5rem;
-    font-size: 2rem;
-  }
-  .roadmap-box-left .roadmap-circle,
+
   .roadmap-box-right .roadmap-circle {
     transform: translate(-1rem, 0);
   }
-  .roadmap-text-box {
-    font-size: 1.5rem;
-    padding: 1.5rem;
-  }
   .roadmap-text-box h6 {
-    font-size: 2rem;
+    font-size: 2.6rem;
   }
-  .road-map-line {
-    transform: translate(1.25rem, 0);
+  .txt{
+    font-size: 1.6rem;
   }
-  .roadmap-box-right {
-    margin: 2.5rem 0;
-  }
-  .grd-btn {
-    font-size: 1.35rem;
-    padding: 0.75rem 1.75rem;
-  }
-  .headerContent img {
-    height: 40%;
-  }
-  .headerContent {
-    height: 6.5rem;
-  }
-  .mainHeading {
-    font-size: 2.25rem;
-    margin: 0 0 1.5rem 0;
-    width: 100%;
-    text-align: center;
-  }
-  .close-mob-header {
-    display: none;
-  }
-  .active-mob-header.header {
-    background: var(--white) !important;
-  }
-  .mob-header {
-    width: 100%;
-    height: calc(100vh - 6.45rem);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translate(0, 100%);
-    z-index: 1000;
-    background: var(--grd);
-    display: none;
-  }
-  .active-mob-header.header .mob-header {
-    display: block;
-  }
-  .active-mob-header.header .open-mob-header {
-    display: none;
-  }
-  .active-mob-header.header .close-mob-header {
-    display: flex;
-  }
-  .mob-header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 5rem 0;
-  }
-  .mob-header-content a {
-    font-size: 1.65rem;
-    margin: 0 0 2.5rem 0;
-    color: var(--white);
-  }
-  .open-mob-header {
-    display: flex;
-  }
+}
+@media screen and (max-width: 769px) {
+
 }
 
 .a {
@@ -407,4 +334,12 @@ padding: 1.6rem;
   margin-left: 10px;
   vertical-align: top;
   margin-top: 6px;
+}
+@media screen and (max-width: 768px) {
+  .road-map-line,.roadmap-circle{
+    display: none;
+  }
+  .roadmap-box-content{
+    width:100%
+  }
 }
