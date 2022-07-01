@@ -27,10 +27,10 @@ import {Power4} from "gsap/dist/gsap";
 import {gsap} from "gsap/dist/gsap";
 import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 import {ScrollToPlugin} from "gsap/dist/ScrollToPlugin";
+import {default as LanguageSwitch} from "./LanguageSwitch";
 
 const commafy = require('commafy');
 
-import {default as ThemeSwitch} from "./ThemeSwitch";
 
 const locale = require('../locales');
 
@@ -308,7 +308,7 @@ const Home = () => {
                             <a onClick={moveTo4Mob}>aaaa 3</a>
                             <a onClick={moveTo5Mob}>aaaa 4</a>
                             <a onClick={moveTo6Mob}>aaaa 5</a>
-                            <a href="https://docs.ihelp.finance" target="_blank">aaaa 6</a>
+                            <a href="https://docs.ihelp.finance" target="blank">aaaa 6</a>
                         </div>
                     </div>
                 </div>
@@ -316,14 +316,16 @@ const Home = () => {
                     <div className="headerContent">
                         <img onClick={moveTo1} src="./assets/logo.svg" alt=""/>
                         <div className="headerRight">
-                            <a onClick={moveTo2}>how it works</a>
-                            <a onClick={moveTo3}>charities</a>
-                            <a onClick={moveTo5}>roadmap</a>
-                            <a onClick={moveTo6}>faq</a>
-                            <a href="https://docs.ihelp.finance" target="_blank">docs</a>
+                            <a onClick={moveTo2}>{locale[lang].header.howitworks}</a>
+                            <a onClick={moveTo3}>{locale[lang].header.charities}</a>
+                            <a onClick={moveTo5}>{locale[lang].header.roadmap}</a>
+                            <a onClick={moveTo6}>{locale[lang].header.faq}</a>
+                            <a href="https://docs.ihelp.finance" target="blank">{locale[lang].header.docs}</a>
+                            <LanguageSwitch lang={lang} handleLangChange={handleLangChange}/>
+
                         </div>
-                        <a href="https://avalanche.ihelp.finance" target="_blank">
-                            <button className="grd-btn">ENTER APP</button>
+                        <a href="https://avalanche.ihelp.finance" target="blank">
+                            <button className="grd-btn">{locale[lang].header.enter}</button>
                         </a>
                         <div>
                             <MdMenu onClick={openMobHeader} className="open-mob-header"/>
@@ -340,11 +342,12 @@ const Home = () => {
 
             <div className="box">
                 <div className={st.heroContent}>
+                    {/*<p> {locale[lang].hero.subtitle}</p>*/}
                     <h1>Charitable Giving Powered by DeFi</h1>
                     <h2>
                         Donate Yield to Awesome Charities
                     </h2>
-                    <a href="https://avalanche.ihelp.finance" target="_blank">
+                    <a href="https://avalanche.ihelp.finance" target="blank">
                         <button className="grd-btn">ENTER APP</button>
                     </a>
 
@@ -372,49 +375,8 @@ const Home = () => {
                         <h1 id="total_helpers">${totalCountries}</h1>
                         <h2>2 Countries</h2>
                     </main>
-
                 </div>
-                {/*                <div style={{
-                    position: 'relative',
-                    fontSize: '16px',
-                    fontStyle: 'italic',
-                    width: '100%',
-                    textAlign: 'center',
-                    marginTop: '0px',
-                    display: 'inline-block'
-                }}><a href="https://avalanche.ihelp.finance" target="_blank"
-                      style={{textDecoration: 'underline'}}>xxxxx</a></div>*/}
-
             </div>
-
-            {/* Info Grid */}
-            {/*<div className={st.infoGrid + " " + "section"}>
-        <div className="box">
-          <div className={st.infoGridContent}>
-            <main>
-              <img src="./assets/card-img-1.png" alt="img" />
-              <h1>#3,565,996</h1>
-              <h2>Total Capital Donated</h2>
-            </main>
-            <main>
-              <img src="./assets/card-img-2.png" alt="img" />
-              <h1>#3,565,996</h1>
-              <h2>Total Pledged</h2>
-            </main>
-            <main>
-              <img src="./assets/card-img-3.png" alt="img" />
-              <h1>157 Charities</h1>
-              <h2>93 Countries</h2>
-            </main>
-            <main>
-              <img src="./assets/card-img-4.png" alt="img" />
-              <h1>10, 000</h1>
-              <h2>Total Helpers</h2>
-            </main>
-          </div>
-          <img className={st.map} src="./assets/map.png" alt="" />
-        </div>
-      </div>*/}
 
             {/* How It Works */}
             <div id="section2" className={st.howItWorks + " " + "section"}>
@@ -648,7 +610,7 @@ const Home = () => {
                 <div className="box">
                     <div className={st.footerContent}>
                         <ul className={st.footerLeft}>
-                            <a href="https://turbinex.io" target="_blank"
+                            <a href="https://turbinex.io" target="blank"
                                style={{fontWeight: '', fontSize: '16px'}}>
                                 © 2022 Turbine X, LLC
                             </a>
@@ -663,16 +625,16 @@ const Home = () => {
                             </li>
                         </ul>
                         <div className={st.footerRight}>
-                            <a href="https://discord.gg/qXKE27dZVb" target="_blank">
+                            <a href="https://discord.gg/qXKE27dZVb" target="blank">
                                 <FaDiscord/>
                             </a>
-                            <a href="https://twitter.com/ihelp_defi" target="_blank">
+                            <a href="https://twitter.com/ihelp_defi" target="blank">
                                 <FaTwitter/>
                             </a>
-                            <a href="https://ihelp-finance.medium.com" target="_blank">
+                            <a href="https://ihelp-finance.medium.com" target="blank">
                                 <FaMedium/>
                             </a>
-                            <a href="https://github.com/iHelp-Finance" target="_blank">
+                            <a href="https://github.com/iHelp-Finance" target="blank">
                                 <FaGithub/>
                             </a>
                         </div>

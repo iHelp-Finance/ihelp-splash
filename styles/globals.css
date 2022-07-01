@@ -292,6 +292,7 @@ padding: 1.6rem;
 }
 .switch-lang:hover .lang-dropdown {
   display: block;
+  max-width: max-content;
 }
 .switcher-link {
   color: #fff;
@@ -303,6 +304,12 @@ padding: 1.6rem;
   background: transparent;
   padding: 3px 5px 0px 5px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.switch-lang img {
+  width: 100%;
+  max-width: 45px;
 }
 .lang-flag {
   width: 25px;
@@ -314,16 +321,27 @@ padding: 1.6rem;
   margin-left: 5px;
   vertical-align: top;
   margin-top: 6px;
+font-weight: 700;
 }
 .lang-dropdown {
   display: none;
-  background: transparent;
-  border-radius: 5px;
-  position:absolute
+  border-radius:0 0 5px 5px;
+  position:absolute;
+  margin-top: 2rem;
+  box-shadow: 0 6px 12px rgb(38 38 38 / 10%);
+  background-color: #fff;
+  padding: 1rem 3rem;
+  margin-left: -3rem;
 }
 .selecting-lang {
   padding: 3px 5px 3px 5px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.selecting-lang:last-child {
+  margin-bottom: 0;
 }
 .selecting-lang:hover {
   background: #ac52f244;
