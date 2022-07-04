@@ -29,7 +29,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 const commafy = require('commafy');
 
-import {default as ThemeSwitch} from "./ThemeSwitch";
+{/*import {default as ThemeSwitch} from "./ThemeSwitch";*/}
 import {default as LanguageSwitch} from "./LanguageSwitch";
 
 const locale  = require('../locales');
