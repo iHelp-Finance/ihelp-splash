@@ -50,10 +50,10 @@ spec:
         volumeMounts:
         - name: ihelp-files
           mountPath: /etc/nginx/nginx.conf
-          subPath: ihelp-splash/nginx/nginx.conf
+          subPath: redesign-clean/ihelp-splash/nginx/nginx.conf
         - name: ihelp-files
           mountPath: /etc/nginx/.htpasswd
-          subPath: ihelp-splash/nginx/.htpasswd
+          subPath: redesign-clean/ihelp-splash/nginx/.htpasswd
       volumes:
       - name: ihelp-files
         persistentVolumeClaim:
@@ -88,7 +88,7 @@ spec:
         volumeMounts:
         - name: ihelp-files
           mountPath: /core
-          subPath: ihelp-splash
+          subPath: redesign-clean/ihelp-splash
       volumes:
       - name: ihelp-files
         persistentVolumeClaim:

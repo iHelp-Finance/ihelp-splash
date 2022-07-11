@@ -356,13 +356,13 @@ const Home = () => {
                 
             <main>
               <img src="./assets/lightMode/valueLocked_light.png" alt="img" />
-              <h1 id="total_interest">${tvl}</h1>
+              <h1 id="total_interest">{tvl != '' ? `$${tvl}` : ''}</h1>
               <h2>{locale[lang].hero.tvl}</h2>
             </main>
             
             <main>
               <img src="./assets/lightMode/generated_light.png" alt="img" />
-              <h1 id="total_interest">${totalInterest}</h1>
+              <h1 id="total_interest">{totalInterest != '' ? `$${totalInterest}` : ''}</h1>
               <h2>{locale[lang].hero.totalinterest}</h2>
             </main>
             
