@@ -82,6 +82,7 @@ background-color: #dde8f2aa;
   font-size: 3.25rem;
   font-weight: 700;
   margin: 3.5rem 0 0 0;
+  color: #5C0FC5;
 }
 
 .infoGridContent main h2 {
@@ -191,10 +192,16 @@ border: none;
   justify-content: space-between;
 }
 .whyContent ul{
-  width: 47%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4%;
 }
 .whyContent ul li{
-margin-bottom: 1.6rem}
+margin-bottom: 1.6rem;
+width: 48%;
+
+}
  .txt{
   font-weight: 400;
   font-size: 1.8rem;

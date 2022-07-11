@@ -327,7 +327,6 @@ font-weight: 700;
   display: none;
   border-radius:0 0 5px 5px;
   position:absolute;
-  margin-top: 2rem;
   box-shadow: 0 6px 12px rgb(38 38 38 / 10%);
   background-color: #fff;
   padding: 1rem 3rem;
@@ -352,6 +351,9 @@ font-weight: 700;
   margin-left: 10px;
   vertical-align: top;
   margin-top: 6px;
+}
+.foundationBox{
+  margin-top: 3rem;
 }
 @media screen and (max-width: 768px) {
   .road-map-line,.roadmap-circle{

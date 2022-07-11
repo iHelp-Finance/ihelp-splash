@@ -343,10 +343,8 @@ const Home = () => {
             <div className="box">
                 <div className={st.heroContent}>
                     {/*<p> {locale[lang].hero.subtitle}</p>*/}
-                    <h1>Charitable Giving Powered by DeFi</h1>
-                    <h2>
-                        Donate Yield to Awesome Charities
-                    </h2>
+                    <h1>{locale[lang].hero.title}</h1>
+                    <h2>{locale[lang].hero.subtitle}</h2>
                     <a href="https://avalanche.ihelp.finance" target="blank">
                         <button className="grd-btn">ENTER APP</button>
                     </a>
@@ -358,22 +356,22 @@ const Home = () => {
                     <main>
                         <img src="./assets/card-img-1.png" alt="img"/>
                         <h1 id="total_interest">${totalInterest}</h1>
-                        <h2>Total Value Locked</h2>
+                        <h2>{locale[lang].hero.tvl}</h2>
                     </main>
                     <main>
                         <img src="./assets/card-img-2.png" alt="img"/>
                         <h1 id="total_interest">${tvl}</h1>
-                        <h2>Total Yield Donated</h2>
+                        <h2>{locale[lang].hero.totalinterest}</h2>
                     </main>
                     <main>
                         <img src="./assets/card-img-3.png" alt="img"/>
                         <h1 id="total_interest">${totalHelpers}</h1>
-                        <h2 id="total_countries">Total Helpers</h2>
+                        <h2 id="total_countries">{locale[lang].hero.helpers}</h2>
                     </main>
                     <main>
                         <img src="./assets/card-img-4.png" alt="img"/>
-                        <h1 id="total_helpers">${totalCountries}</h1>
-                        <h2>2 Countries</h2>
+                        <h1 id="total_helpers">{locale[lang].hero.charities}</h1>
+                        <h2>{locale[lang].hero.countries}</h2>
                     </main>
                 </div>
             </div>
@@ -381,19 +379,17 @@ const Home = () => {
             {/* How It Works */}
             <div id="section2" className={st.howItWorks + " " + "section"}>
                 <div className="box">
-                    <h1 className="mainHeading">How it works</h1>
+                    <h1 className="mainHeading">{locale[lang].howitworks.title}</h1>
                     <div className={st.howItWorksContent}>
                         <div className={st.howItWorksGrid}>
                             <p>
-                                The IHELP protocol serves the intersection of web3 and charitable giving. IHELP is a
-                                decentralized donation protocol where anyone can participate and easily contribute to
-                                charitable causes worldwide.
+                                {locale[lang].howitworks.paragraph1}
                             </p>
                             <p>
-                                IHELP allows you to sustainably & automatically donate yield to any charity in the
-                                ecosystem. You can also easily donate crypto directly if you wish.
+                                {locale[lang].howitworks.paragraph2}
                             </p>
                         </div>
+
                         {/*                            <video
                                 ref={videoRef}
                                 src={`./assets/ihelp_animated.mp4`}
@@ -409,34 +405,46 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* Why */}
-            <div id="section3" className={st.why + " " + "section"}>
+            {/*            <div id="section3" className={st.why + " " + "section"}>
                 <div className="box">
-                    <h1 className="mainHeading">Charities</h1>
-                    <h2 className={st.headTxt}>Sustainable + Recurring Donations</h2>
+                    <h1 className="mainHeading">{locale[lang].charities.title}</h1>
+                    <h2 className={st.headTxt}>{locale[lang].charities.subTitle}</h2>
                     <div className={st.whyContent}>
-                        <p className={st.txt}>IHELP makes it easy for you to fundraise from crypto donors. The protocol
-                            is great for donors and easy to use for charities:
-                        </p>
+                        <p className={st.txt}>{locale[lang].charities.description}</p>
                         <div>
                             <ul>
-                                <li className={st.txt}>A donor chooses which charity they want to donate to.</li>
-                                <li className={st.txt}>They can choose to either donate the yield their assets generate,
-                                    or to donate capital directly to your charity.
-                                </li>
-                            </ul>
-                            <ul>
-                                <li className={st.txt}>IHELP does the rest of the work.
-                                </li>
-                                <li className={st.txt}>You'll receive 100% of donations after fees in your bank account
-                                    from the IHELP Foundation.
-                                </li>
+                                <li className={st.txt}>{locale[lang].charities.li1}</li>
+                                <li className={st.txt}></li>
+                                <li className={st.txt}>{locale[lang].charities.li3}</li>
+                                <li className={st.txt}>{locale[lang].charities.li4}</li>
                             </ul>
                         </div>
                     </div>
                 </div>
+            </div>*/}
+            <div className="box">
+                <h1 className="mainHeading">{locale[lang].why.title}</h1>
+                <div className={st.howItWorksContent}>
+                    <div className={st.howItWorksGrid}>
+                        <p>
+                            {locale[lang].why.paragraph1}
+                        </p>
+                    </div>
+                </div>
             </div>
-
+            <div className="box foundationBox" >
+                <h1 className="mainHeading">{locale[lang].foundation.title}</h1>
+                <div className={st.howItWorksContent}>
+                    <div className={st.howItWorksGrid}>
+                        <p>
+                            {locale[lang].foundation.paragraph1}
+                        </p>
+                        <p>
+                            {locale[lang].foundation.paragraph2}
+                        </p>
+                    </div>
+                </div>
+            </div>
             {/* Roadmap */}
             <div id="section5" className={st.howItWorks + " " + "section"}>
                 <div className="box">
@@ -447,14 +455,14 @@ const Home = () => {
                         <div className="roadmap-box-left">
                             <div className="roadmap-box-content">
                                 <div className="roadmap-text-box">
-                                    <h6>2021 Second Half</h6>
+                                    <h6>{locale[lang].roadmap.r1}</h6>
                                     <ul>
-                                        <li className={st.txt}>Creation of IHELP Smart Contracts</li>
-                                        <li className={st.txt}>Deployment of App on Rinkeby Testnet</li>
-                                        <li className={st.txt}>Deployment of Front End V1</li>
-                                        <li className={st.txt}>Protocol Documentation Published</li>
-                                        <li className={st.txt}>Staking Pool & Leaderboard V1</li>
-                                        <li className={st.txt}>Documents Published</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r1b1}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r1b2}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r1b3}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r1b4}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r1b5}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r1b6}</li>
                                     </ul>
                                 </div>
                                 <div className="roadmap-circle">
@@ -468,13 +476,13 @@ const Home = () => {
 
                                 </div>
                                 <div className="roadmap-text-box">
-                                    <h6>2022 First Half</h6>
+                                    <h6>{locale[lang].roadmap.r2}</h6>
                                     <ul>
-                                        <li className={st.txt}>Contract Audits</li>
-                                        <li className={st.txt}>IHELP Foundation incorporated</li>
-                                        <li className={st.txt}>Integration with Lending Protocol</li>
-                                        <li className={st.txt}>Integration with Fiat Banking System</li>
-                                        <li className={st.txt}>Deployment of Dapp</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r2b1}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r2b2}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r2b3}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r2b4}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r2b5}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -482,10 +490,10 @@ const Home = () => {
                         <div className="roadmap-box-left">
                             <div className="roadmap-box-content">
                                 <div className="roadmap-text-box">
-                                    <h6>2022 Second Half</h6>
+                                    <h6>{locale[lang].roadmap.r3}</h6>
                                     <ul>
-                                        <li className={st.txt}>Front End V2</li>
-                                        <li className={st.txt}>Leaderboard V2</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r3b1}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r3b2}</li>
                                     </ul>
                                 </div>
                                 <div className="roadmap-circle">
@@ -499,10 +507,10 @@ const Home = () => {
 
                                 </div>
                                 <div className="roadmap-text-box">
-                                    <h6>2023</h6>
+                                    <h6>{locale[lang].roadmap.r4}</h6>
                                     <ul>
-                                        <li className={st.txt}>Deployment on additional EVM compatible L1 or L2</li>
-                                        <li className={st.txt}>Decentralization v1</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r4b1}</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r4b2}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -510,9 +518,9 @@ const Home = () => {
                         <div className="roadmap-box-left">
                             <div className="roadmap-box-content">
                                 <div className="roadmap-text-box">
-                                    <h6>Long Term</h6>
+                                    <h6>{locale[lang].roadmap.r5}</h6>
                                     <ul>
-                                        <li className={st.txt}>Transition to fully decentralized governance</li>
+                                        <li className={st.txt}>{locale[lang].roadmap.r5b1}</li>
                                     </ul>
                                 </div>
                                 <div className="roadmap-circle">
@@ -527,78 +535,53 @@ const Home = () => {
             {/* FAQ */}
             <div id="section6" className={st.charities + " " + "section"}>
                 <div className="box">
-                    <h1 className="mainHeading">FAQ</h1>
+                    <h1 className="mainHeading">{locale[lang].faq.title}</h1>
                     <div className={st.faqContent}>
                         <div className={st.faqBox}>
                             <div className={st.faqQ + " " + "q q3"}>
-                                <h6>What is IHELP?</h6>
+                                <h6>{locale[lang].faq.q1}</h6>
                                 <MdKeyboardArrowDown/>
-
                             </div>
                             <div className={st.faA + " " + "a a3"}>
-                                <p>
-                                    The IHELP protocol is a platform where people can easily generate and donate yield
-                                    to charities worldwide. We seek to allow everyone the opportunity to support
-                                    meaningful causes sustainably. Donors ("Helpers") can browse a list of charities
-                                    worldwide and choose the causes they wish to support. We offer donors the
-                                    opportunity to either donate yield or capital towards their chosen charities.
-                                    Helpers who decide to donate yield can withdraw or reallocate their capital at any
-                                    time. For more information,
-                                </p>
+                                <p>{locale[lang].faq.q1a1}</p>
                             </div>
                         </div>
                         <div className={st.faqBox}>
                             <div className={st.faqQ + " " + "q q4"}>
-                                <h6>What is the HELP token?</h6>
+                                <h6>{locale[lang].faq.q2}</h6>
                                 <MdKeyboardArrowDown/>
                             </div>
                             <div className={st.faA + " " + "a a4"}>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab asperiores atque dolor
-                                    ea earum ex fuga iusto magni nisi obcaecati odit officia porro quae quibusdam
-                                    repellat, sed sit voluptate voluptatum.
-                                </p>
+                                <p>{locale[lang].faq.q2a1}</p>
                             </div>
                         </div>
                         <div className={st.faqBox}>
                             <div className={st.faqQ + " " + "q q5"}>
-                                <h6>Is IHELP audited?</h6>
+                                <h6>{locale[lang].faq.q3}</h6>
                                 <MdKeyboardArrowDown/>
 
                             </div>
                             <div className={st.faA + " " + "a a5"}>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab asperiores atque dolor
-                                    ea earum ex fuga iusto magni nisi obcaecati odit officia porro quae quibusdam
-                                    repellat, sed sit voluptate voluptatum.
-                                </p>
+                                <p>{locale[lang].faq.q3a1}</p>
                             </div>
                         </div>
                         <div className={st.faqBox}>
                             <div className={st.faqQ + " " + "q q6"}>
-                                <h6>Can I get a tax receipt for my donation? </h6>
+                                <h6>{locale[lang].faq.q4}</h6>
                                 <MdKeyboardArrowDown/>
 
                             </div>
                             <div className={st.faA + " " + "a a6"}>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab asperiores atque dolor
-                                    ea earum ex fuga iusto magni nisi obcaecati odit officia porro quae quibusdam
-                                    repellat, sed sit voluptate voluptatum.
-                                </p>
+                                <p>{locale[lang].faq.q4a1}</p>
                             </div>
                         </div>
                         <div className={st.faqBox}>
                             <div className={st.faqQ + " " + "q q7"}>
-                                <h6>What’s the difference between direct donation and yield donation?</h6>
+                                <h6>{locale[lang].faq.q5}</h6>
                                 <MdKeyboardArrowDown/>
                             </div>
                             <div className={st.faA + " " + "a a7"}>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab asperiores atque dolor
-                                    ea earum ex fuga iusto magni nisi obcaecati odit officia porro quae quibusdam
-                                    repellat, sed sit voluptate voluptatum.
-                                </p>
+                                <p>{locale[lang].faq.q5a1}</p>
                             </div>
                         </div>
                     </div>
