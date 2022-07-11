@@ -297,8 +297,8 @@ const Home = () => {
 
   return (
     <div id="app" className="app">
-      <img src="./assets/bgc.svg" alt="Bgc" className="body-bgc" />
-      {/* Header */}
+       {/*<img src="./assets/bgc.svg" alt="Bgc" className="body-bgc" />
+      Header */}
       <div className="header">
         <div className="mob-header">
           <div className="box">
@@ -355,25 +355,29 @@ const Home = () => {
                 <div className={st.infoGridContent}>
                 
             <main>
-              <img src="./assets/card-img-1.png" alt="img" />
-              <h1 id="total_interest">${totalInterest}</h1>
-              <h2>{locale[lang].hero.totalinterest}</h2>
-            </main>
-            <main>
-              <img src="./assets/card-img-2.png" alt="img" />
+              <img src="./assets/lightMode/valueLocked_light.png" alt="img" />
               <h1 id="total_interest">${tvl}</h1>
               <h2>{locale[lang].hero.tvl}</h2>
             </main>
+            
             <main>
-              <img src="./assets/card-img-3.png" alt="img" />
-              <h1 id="total_interest">{totalCharities} {locale[lang].hero.charities}</h1>
-              <h2 id="total_countries">{totalCountries} {locale[lang].hero.countries}</h2>
+              <img src="./assets/lightMode/generated_light.png" alt="img" />
+              <h1 id="total_interest">${totalInterest}</h1>
+              <h2>{locale[lang].hero.totalinterest}</h2>
             </main>
+            
             <main>
-              <img src="./assets/card-img-4.png" alt="img" />
+              <img src="./assets/lightMode/helpers_light.png" alt="img" />
               <h1 id="total_helpers">{totalHelpers}</h1>
               <h2>{locale[lang].hero.helpers}</h2>
             </main>
+            
+            <main>
+              <img src="./assets/lightMode/charities_light.png" alt="img" />
+              <h1 id="total_interest">{totalCharities}</h1>
+              <h2>{locale[lang].hero.charities}</h2>
+            </main>
+            
             
           </div>
           <div style={{position:'relative',fontSize:'16px',fontStyle:'italic',width:'100%',textAlign:'center',marginTop:'0px',display:'inline-block'}}><a href="https://avalanche.ihelp.finance" target="_blank" style={{textDecoration:'underline'}}>{locale[lang].hero.deployment}</a></div>
@@ -450,7 +454,7 @@ const Home = () => {
             <div className={st.faqBox} style={{borderBottom:'none'}}>
      
 
-                <h6 style={{fontSize: '2.25rem',fontWeight: '600',width: '95%',marginTop:'-20px'}}>{locale[lang].why.title}</h6>
+                <h6 className={st.subTitle}>{locale[lang].why.title}</h6>
          
       <div style={{width: '100%',
     fontSize: '1.65rem',
@@ -536,7 +540,7 @@ const Home = () => {
             <div className={st.faqBox} style={{borderBottom:'none'}}>
      
 
-                <h6 style={{fontSize: '2.25rem',fontWeight: '600',width: '95%',marginTop:'-20px'}}>{locale[lang].foundation.title}</h6>
+                <h6 className={st.subTitle}>{locale[lang].foundation.title}</h6>
          
       <div style={{width: '100%',
     fontSize: '1.65rem',
@@ -586,14 +590,14 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="roadmap-circle">
-                  1
+                  
                 </div>
               </div>
             </div>
             <div className="roadmap-box-right">
               <div className="roadmap-box-content">
                 <div className="roadmap-circle">
-                  2
+                  
                 </div>
                 <div className="roadmap-text-box">
                   <h6>{locale[lang].roadmap.r2}</h6>
@@ -619,14 +623,14 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="roadmap-circle">
-                  3
+                  
                 </div>
               </div>
             </div>
             <div className="roadmap-box-right">
               <div className="roadmap-box-content">
                 <div className="roadmap-circle">
-                  4
+                  
                 </div>
                 <div className="roadmap-text-box">
                   <h6>{locale[lang].roadmap.r4}</h6>
@@ -645,7 +649,7 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="roadmap-circle">
-                  5
+                  
                 </div>
               </div>
             </div>
@@ -712,7 +716,19 @@ const Home = () => {
         <div className="box">
           <div className={st.footerContent}>
             <div className={st.footerLeft}>
-              <a href="https://turbinex.io" target="_blank" style={{fontWeight:'',fontSize:'16px'}}>© 2022 Turbine X, LLC</a>
+              <a href="https://turbinex.io" target="_blank" style={{fontWeight:'',fontSize:'14px'}}><h4 style={{fontWeight:'normal',marginTop:'0px'}}>© 2022 Turbine X, LLC</h4></a> 
+              | 
+              <a href="https://app.ihelp.finance/login" target="_blank">
+                   <h4 style={{fontWeight:'normal',marginLeft:'16px',marginTop:'0px',fontSize:'14px'}}>Charity Login</h4>
+              </a>
+              |
+              <a href="https://status.ihelp.finance" target="_blank">
+                   <h4 style={{fontWeight:'normal',marginLeft:'16px',marginTop:'0px',fontSize:'14px'}}>Status</h4>
+              </a>
+              |
+              <a href="https://docs.ihelp.finance" target="_blank">
+                   <h4 style={{fontWeight:'normal',marginLeft:'16px',marginTop:'0px',fontSize:'14px'}}>Docs</h4>
+              </a>
             </div>
             <div className={st.footerRight}>
               <a href="https://discord.gg/qXKE27dZVb" target="_blank">
@@ -731,6 +747,8 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
+      
 {/*      <ThemeSwitch /> */}
     </div>
   );

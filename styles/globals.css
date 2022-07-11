@@ -1,4 +1,4 @@
-/*New*/
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
@@ -42,9 +42,12 @@ button {
   font-size: 1.65rem;
   color: var(--white);
   background: var(--grd);
-  padding: 0.85rem 2.25rem;
-  border-radius: 0.5rem;
+  padding: 1.6rem 3.2rem;
   transition: 0.5s;
+
+  font-weight: 700;
+  background: #5C0FC5;
+  border-radius: 2.8rem;
 }
 .grd-btn:hover {
   box-shadow: 0 3px 5px rgba(172, 82, 242, 0.5);
@@ -55,10 +58,11 @@ button {
   position: relative;
 }
 .mainHeading {
-  font-size: 2.75rem;
+  font-size: 3.6rem;
   font-weight: 700;
-  color: var(--light-purple);
-  margin: 0 0 3.5rem 0;
+  color: #5C0FC5;
+  margin: 0 0 1.6rem 0;
+  text-align: center;
 }
 .section {
   width: 100%;
@@ -72,30 +76,35 @@ button {
   position: sticky;
   top: 0;
   z-index: 1000;
+
+  background: #FFFFFF;
+  box-shadow: 0 6px 12px rgba(38, 38, 38, 0.1);
 }
 .headerContent img {
-  height: 50%;
-  object-fit: contain;
-  margin: 0 2.5rem 0 0;
-  cursor: pointer;
+ width: 18.6rem;
+    object-fit: contain;
+    cursor: pointer;
 }
 .headerContent {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.6rem;
 }
 .headerRight {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: flex-end;
+    margin-left: 4rem;
+    display: flex;
+    flex: 1 1;
+    align-items: center;
+    justify-content: center;
 }
 .headerRight a {
-  font-size: 1.5rem;
-  color: var(--black);
-  font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--black);
+    font-weight: 500;
+    margin-right: 2rem;
+    text-transform: uppercase;
 }
 .headerRight a:hover {
   color: var(--light-purple);
@@ -137,7 +146,7 @@ button {
 .road-map-line {
   width: 0.25rem;
   height: 100%;
-  background: var(--dark-purple);
+  background: #D6C2F2;
   position: absolute;
   top: 0;
   left: 50%;
@@ -162,15 +171,18 @@ button {
   align-items: center;
 }
 .roadmap-text-box {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  background: var(--grd);
-  padding: 2.5rem;
-  border-radius: 1rem;
-  color: var(--white);
-  font-size: 1.25rem;
-  opacity: 0.8;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex: 1 1;
+    flex: 1 1;
+    background: #F0E6FA;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    color: var(--white);
+    font-size: 1.25rem;
+    opacity: 0.8;
 }
 .roadmap-text-box p {
   margin: 0.65rem 0;
@@ -181,24 +193,25 @@ button {
   margin: 0 0 1.25rem 0;
 }
 .roadmap-circle {
-  min-width: 6.5rem;
-  min-height: 6.5rem;
+  min-width: 3rem;
+  min-height: 3rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--grd);
+  background: #D6C2F2;
   font-size: 3rem;
   color: var(--white);
   font-weight: 600;
   position: relative;
   z-index: 100;
+  
 }
 .roadmap-box-left .roadmap-circle {
-  transform: translate(3.25rem, 0);
+  transform: translate(1.5rem, 0);
 }
 .roadmap-box-right .roadmap-circle {
-  transform: translate(-3.25rem, 0);
+  transform: translate(-1.5rem, 0);
 }
 .rotate {
   transform: rotate(180deg);
@@ -210,12 +223,22 @@ button {
 .open-mob-header {
   display: none;
 }
+
+
+
+
+
+
 @media screen and (max-width: 1200px) {
+
+  .roadmap-content{
+    width: 100%;
+  }
   .headerRight > * {
     margin: 0 0 0 1.5rem;
   }
   .headerContent img {
-    height: 45%;
+    height: 90%;
   }
   .section {
     padding: 3.5rem 0;
@@ -234,9 +257,21 @@ button {
     flex-direction: row-reverse;
   }
   .roadmap-box-left .roadmap-circle {
-    transform: translate(-3.25rem, 0);
+    transform: translate(-1.5rem, 0);
+  }
+  .txt{
+    font-size: 1.6rem;
   }
 }
+
+
+.roadmap-text-box{
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  color: #262626;
+}
+
 @media screen and (max-width: 800px) {
   .headerRight a {
     display: none;
@@ -245,13 +280,13 @@ button {
     width: 100%;
   }
   .roadmap-circle {
-    min-width: 5rem;
-    min-height: 5rem;
+    min-width: 3rem;
+    min-height: 3rem;
     font-size: 2rem;
   }
   .roadmap-box-left .roadmap-circle,
   .roadmap-box-right .roadmap-circle {
-    transform: translate(-1rem, 0);
+    transform: translate(-0.5rem, 0);
   }
   .roadmap-text-box {
     font-size: 1.5rem;
@@ -271,7 +306,7 @@ button {
     padding: 0.75rem 1.75rem;
   }
   .headerContent img {
-    height: 40%;
+      height: 90%;
   }
   .headerContent {
     height: 6.5rem;
@@ -324,6 +359,13 @@ button {
   }
 }
 
+
+
+
+
+
+
+
 .a {
 	height: 0;
 	margin:  0rem 0 0 0 !important;
@@ -339,6 +381,11 @@ button {
 	margin-top:-1rem;
 }
 
+.roadmap-text-box h6 {
+    font-weight: 500;
+    font-size: 2.2rem;
+    color: #5C0FC5;
+}
 
 .switch-lang {
   width: 55px;
@@ -346,10 +393,12 @@ button {
   cursor: pointer;
   z-index: 50;
       margin-left: 25px;
-    margin-right: -10px;
+    margin-right: 0px;
+    margin-top: -5px;
 }
 .switch-lang:hover .lang-dropdown {
   display: block;
+  max-width: max-content;
 }
 .switcher-link {
   color: #fff;
@@ -361,6 +410,11 @@ button {
   background: transparent;
   padding: 3px 5px 0px 5px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.switch-lang img {
+  width: 32px !important;
 }
 .lang-flag {
   width: 25px;
@@ -372,16 +426,24 @@ button {
   margin-left: 5px;
   vertical-align: top;
   margin-top: 6px;
+font-weight: 700;
 }
 .lang-dropdown {
   display: none;
-  background: transparent;
-  border-radius: 5px;
-  position:absolute
+  border-radius:0 0 5px 5px;
+  position:absolute;
+  box-shadow: 0 6px 12px rgb(38 38 38 / 10%);
+  background-color: #fff;
 }
 .selecting-lang {
   padding: 3px 5px 3px 5px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.selecting-lang:last-child {
+  margin-bottom: 0;
 }
 .selecting-lang:hover {
   background: #ac52f244;
