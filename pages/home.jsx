@@ -315,7 +315,7 @@ const Home = () => {
         </div>
         <div className="box">
           <div className="headerContent">
-            <img onClick={moveTo1} src="./assets/logo.svg" alt="" />
+            <img onClick={moveTo1} src="./assets/logo.IHELP.svg" alt="" />
             <div className="headerRight">
               <a onClick={moveTo2}>{locale[lang].header.howitworks}</a>
               <a onClick={moveTo3}>{locale[lang].header.why}</a>
@@ -462,10 +462,14 @@ const Home = () => {
     margin: '1.5rem 0 0 0',
     color: 'rgba(0,0,0,0.75)'}}>
 
-   <div style={{display:'block',position:'relative',marginLeft:'30px',marginTop:'16px',marginBottom:'0px'}}>   
-<p>
+            <div className={st.howItWorksGrid}>
+<main>
 {locale[lang].why.paragraph1} 
-</p>
+</main>
+<main>
+{locale[lang].why.paragraph2}
+</main>
+
 </div>
 </div>
               
