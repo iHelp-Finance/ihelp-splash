@@ -2006,18 +2006,22 @@ const analyticsContract = new ethers.Contract(analyticsAbi['address'], analytics
         <div className="box">
           <div className={st.footerContent}>
             <div className={st.footerLeft}>
-              <a href="https://turbinex.io" target="_blank" style={{fontWeight:'',fontSize:'14px'}}><h4 style={{fontWeight:'normal',marginTop:'0px'}}>© 2022 Turbine X, LLC</h4></a> 
+              <a href="https://turbinex.io" target="_blank" className={st.footerText}><h4 className={st.footerText}>© 2022 Turbine X, LLC</h4></a> 
               | 
               <a href="https://app.ihelp.finance/login" target="_blank">
-                   <h4 style={{fontWeight:'normal',marginLeft:'16px',marginTop:'0px',fontSize:'14px'}}>Charity Login</h4>
+                   <h4 className={st.footerText}>Charity Login</h4>
               </a>
               |
               <a href="https://status.ihelp.finance" target="_blank">
-                   <h4 style={{fontWeight:'normal',marginLeft:'16px',marginTop:'0px',fontSize:'14px'}}>Status</h4>
+                   <h4 className={st.footerText}>Status</h4>
               </a>
               |
               <a href="https://docs.ihelp.finance" target="_blank">
-                   <h4 style={{fontWeight:'normal',marginLeft:'16px',marginTop:'0px',fontSize:'14px'}}>Docs</h4>
+                   <h4 className={st.footerText}>Docs</h4>
+              </a>
+              |
+              <a href="https://docs.ihelp.finance/terms" target="_blank">
+                   <h4 className={st.footerText}>Terms</h4>
               </a>
             </div>
             <div className={st.footerRight}>
