@@ -3,7 +3,7 @@
   "private": true,
   "proxy": "https://app.ihelp.finance",
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 8000",
     "build": "next build",
     "start": "next start -p 8005",
     "lint": "next lint"
@@ -12,6 +12,7 @@
     "antd": "^4.18.8",
     "base-64": "^1.0.0",
     "commafy": "^0.0.6",
+    "ethers": "^5.6.9",
     "gsap": "^3.8.0",
     "http-proxy-middleware": "^2.0.1",
     "jquery": "^3.6.0",

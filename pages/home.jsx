@@ -29,6 +29,9 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 const commafy = require('commafy');
 
+const { ethers } = require("ethers");
+import { utils } from "ethers";
+
 {/*import {default as ThemeSwitch} from "./ThemeSwitch";*/}
 import {default as LanguageSwitch} from "./LanguageSwitch";
 
@@ -123,9 +126,1291 @@ const Home = () => {
       $(".header").removeClass("active-mob-header");
     }); */
 
+const ihelpAddress = "0x500bd3Aaa7c785B07B45eAa09B4384D63A89b374";
 
-    const updateStats = () => {
+const analyticsAbi = {
+          "address": "0xa3eF2e6C687F18ABE09ae65e04460135eb9f0364",
+          "abi": [
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "previousAdmin",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newAdmin",
+                  "type": "address"
+                }
+              ],
+              "name": "AdminChanged",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "implementation",
+                  "type": "address"
+                }
+              ],
+              "name": "Upgraded",
+              "type": "event"
+            },
+            {
+              "stateMutability": "payable",
+              "type": "fallback"
+            },
+            {
+              "inputs": [],
+              "name": "admin",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newAdmin",
+                  "type": "address"
+                }
+              ],
+              "name": "changeAdmin",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "implementation",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newImplementation",
+                  "type": "address"
+                }
+              ],
+              "name": "upgradeTo",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newImplementation",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "data",
+                  "type": "bytes"
+                }
+              ],
+              "name": "upgradeToAndCall",
+              "outputs": [],
+              "stateMutability": "payable",
+              "type": "function"
+            },
+            {
+              "stateMutability": "payable",
+              "type": "receive"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charity",
+                  "type": "address"
+                }
+              ],
+              "name": "charityStats",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "totalValueLocked",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalYieldGenerated",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "numerOfContributors",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalDirectDonations",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.CharityStats",
+                  "name": "",
+                  "type": "tuple"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "generalStats",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "totalValueLocked",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalInterestGenerated",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalHelpers",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalCharities",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.GeneralStats",
+                  "name": "",
+                  "type": "tuple"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charityPool",
+                  "type": "address"
+                }
+              ],
+              "name": "generatedInterest",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getCharityPoolsAddressesAndBalances",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "charityAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "charityName",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "balance",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.CharityBalanceInfo[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getCharityPoolsWithContributions",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "charityName",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "charityAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContributions",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalDonations",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalInterestGenerated",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.IndividualCharityContributionInfo[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charity",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getContributorsPerCharity",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "contributorAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContributions",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalDonations",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalDonationsCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalInterestGenerated",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.CharityContributor[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charity",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                }
+              ],
+              "name": "getDonationCurrencyAllowances",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "tokenAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "currency",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "allowance",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.WalletAllowance[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                }
+              ],
+              "name": "getSupportedCurrencies",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "provider",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "currency",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "underlyingToken",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "lendingAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "priceFeed",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "price",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "priceDecimals",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "decimals",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.DonationCurrencyDetails[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getTotalDirectDonations",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                }
+              ],
+              "name": "getTotalUserGeneratedInterest",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_underlyingCurrency",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getUnderlyingCurrencyGeneratedInterest",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getUserContributionsPerCharity",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "charityName",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "charityAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContributions",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalDonations",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "yieldGenerated",
+                      "type": "uint256"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "address",
+                          "name": "tokenAddress",
+                          "type": "address"
+                        },
+                        {
+                          "internalType": "string",
+                          "name": "currency",
+                          "type": "string"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "totalContributions",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "totalContributionsUSD",
+                          "type": "uint256"
+                        }
+                      ],
+                      "internalType": "struct AnalyticsUtils.UserCharityTokenContributions[]",
+                      "name": "tokenStatistics",
+                      "type": "tuple[]"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.UserCharityContributions[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charity",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                }
+              ],
+              "name": "getUserDirectDonationsStats",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContribNativeToken",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContribUSD",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "contribAfterSwapUSD",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "charityDonationUSD",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "devContribUSD",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "stakeContribUSD",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalDonations",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct CharityPoolUtils.DirectDonationsCounter",
+                  "name": "",
+                  "type": "tuple"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_account",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getUserGeneratedInterest",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charity",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                }
+              ],
+              "name": "getUserTokenContributionsPerCharity",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "tokenAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "currency",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContributions",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContributionsUSD",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.UserCharityTokenContributions[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charity",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                }
+              ],
+              "name": "getUserTokenDonationsPerCharity",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "tokenAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "currency",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContributions",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContributionsUSD",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.UserCharityTokenContributions[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getUserTotalDirectDonations",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                }
+              ],
+              "name": "getUserWalletBalances",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "tokenAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "currency",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "balance",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.WalletBalance[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_cTokenAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getYieldProtocolGeneratedInterest",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charity",
+                  "type": "address"
+                }
+              ],
+              "name": "getYieldProtocolGeneratedInterestByCharity",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "xHelpAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "stakingPoolState",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "iHelpTokensInCirculation",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "iHelpStaked",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.StakingPoolStats",
+                  "name": "",
+                  "type": "tuple"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charity",
+                  "type": "address"
+                }
+              ],
+              "name": "totalCharityLockedValue",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "totalGeneratedInterest",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "totalHelpers",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract CharityPoolInterface",
+                  "name": "_charity",
+                  "type": "address"
+                }
+              ],
+              "name": "totalHelpersInCharity",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "totalLockedValue",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_offset",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_limit",
+                  "type": "uint256"
+                }
+              ],
+              "name": "userStats",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "totalDonationsCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalDirectDonations",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalInterestGenerated",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "totalContributions",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.UserStats",
+                  "name": "",
+                  "type": "tuple"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "contract iHelpTokenInterface",
+                  "name": "_iHelp",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_xHelpAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "walletInfo",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "iHelpBalance",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "xHelpBalance",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "stakingAllowance",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct AnalyticsUtils.WalletInfo",
+                  "name": "",
+                  "type": "tuple"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "initialLogic",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "initialAdmin",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "_data",
+                  "type": "bytes"
+                }
+              ],
+              "stateMutability": "payable",
+              "type": "constructor"
+            }
+          ]
+}
 
+const provider = new ethers.providers.JsonRpcProvider('https://api.avax.network/ext/bc/C/rpc');
+
+const analyticsContract = new ethers.Contract(analyticsAbi['address'], analyticsAbi['abi'], provider);
+
+    const updateStats = async() => {
+
+    analyticsContract.generalStats(ihelpAddress, 0, 1000).then((d) => {
+
+        console.log('generalStats', d)
+
+        // const totalHelpers = commafy(parseFloat(d['totalHelpers']).toFixed(0))
+        // const totalCharities = commafy(parseFloat(d['totalCharities']).toFixed(0))
+        // const totalInterest = commafy(parseFloat(utils.formatUnits(d['totalInterestGenerated'], 18)).toFixed(0))
+        // const totalTvl = commafy(parseFloat(utils.formatUnits(d['totalValueLocked'], 18)).toFixed(0))
+
+        setTotalInterest(commafy(parseFloat(utils.formatUnits(d['totalInterestGenerated'], 18)).toFixed(2)))
+        setTvl(commafy(parseFloat(utils.formatUnits(d['totalValueLocked'], 18)).toFixed(0)))
+        setTotalCharities(commafy(parseFloat(d['totalCharities']).toFixed(0)))
+        setTotalHelpers(commafy(parseFloat(d['totalHelpers']).toFixed(0)))
+        
+        setTimeout(()=>{
+          updateStats();
+        },6000);
+        
+    })
+
+/*
       let url = `https://avalanche.ihelp.finance/api/v1/data/stats`;
 
       fetch(url).then((d) => {
@@ -154,6 +1439,7 @@ const Home = () => {
           updateStats();
         },2000);
       })
+*/
 
     }
     updateStats();
@@ -324,7 +1610,7 @@ const Home = () => {
               <a onClick={moveTo6}>{locale[lang].header.faq}</a>
               <a href="https://docs.ihelp.finance" target="_blank">{locale[lang].header.docs}</a>
               <LanguageSwitch lang={lang} handleLangChange={handleLangChange} />
-              <a href="https://avalanche.ihelp.finance" target="_blank">
+              <a href="https://app.ihelp.finance" target="_blank">
                 <button className="grd-btn">{locale[lang].header.enter}</button>
               </a>
               <MdMenu onClick={openMobHeader} className="open-mob-header" />
@@ -346,7 +1632,7 @@ const Home = () => {
             <h2>
               {locale[lang].hero.subtitle}
             </h2>
-            <a href="https://avalanche.ihelp.finance" target="_blank">
+            <a href="https://app.ihelp.finance" target="_blank">
               <button className="grd-btn">{locale[lang].header.enter}</button>
             </a>
       
@@ -380,7 +1666,7 @@ const Home = () => {
             
             
           </div>
-          <div style={{position:'relative',fontSize:'16px',fontStyle:'italic',width:'100%',textAlign:'center',marginTop:'0px',display:'inline-block'}}><a href="https://avalanche.ihelp.finance" target="_blank" style={{textDecoration:'underline'}}>{locale[lang].hero.deployment}</a></div>
+          <div style={{position:'relative',fontSize:'16px',fontStyle:'italic',width:'100%',textAlign:'center',marginTop:'0px',display:'inline-block'}}><a href="https://app.ihelp.finance" target="_blank" style={{textDecoration:'underline'}}>{locale[lang].hero.deployment}</a></div>
           
         </div>
      

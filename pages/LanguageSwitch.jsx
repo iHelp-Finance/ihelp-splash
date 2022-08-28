@@ -21,11 +21,11 @@ for (let i=0;i<languages.length;i++) {
 }
 
 return (<div className="switch-lang"> 
-  <div className="current-lang"><img className="lang-flag" src={languageFlag[props.lang]}/>
+  <div className="current-lang">
     <p className="lang-text">{props.lang.toUpperCase()}</p>
   </div>
   <div className="lang-dropdown">
-    {additionalOptions.map((l)=>{return <div key={l} onClick={()=>{props.handleLangChange(l)}}className="selecting-lang"><img className="lang-flag" src={languageFlag[l]} />
+    {additionalOptions.map((l)=>{return <div key={l} onClick={()=>{props.handleLangChange(l)}}className="selecting-lang">
       <p className="lang-text">{l.toUpperCase()}</p>
     </div>})}
   </div>

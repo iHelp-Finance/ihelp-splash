@@ -394,7 +394,7 @@ button {
   z-index: 50;
       margin-left: 25px;
     margin-right: 0px;
-    margin-top: -5px;
+    margin-top: -9px;
 }
 .switch-lang:hover .lang-dropdown {
   display: block;
@@ -427,6 +427,7 @@ button {
   vertical-align: top;
   margin-top: 6px;
 font-weight: 700;
+font-size:14px;
 }
 .lang-dropdown {
   display: none;
