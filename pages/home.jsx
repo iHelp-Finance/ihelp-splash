@@ -1388,27 +1388,90 @@ const provider = new ethers.providers.JsonRpcProvider('https://api.avax.network/
 
 const analyticsContract = new ethers.Contract(analyticsAbi['address'], analyticsAbi['abi'], provider);
 
+
+  const preloadStatsData = localStorage.getItem("generalStats")
+
+  if (preloadStatsData != undefined) {
+    try {
+      const preloadStats = JSON.parse(preloadStatsData)
+      console.log('preloadStats',preloadStats)
+      setTotalHelpers(preloadStats['totalHelpers'])
+      setTotalCharities(preloadStats['totalCharities'])
+      setTotalInterest(preloadStats['totalInterest'])
+      setTvl(preloadStats['totalTvl'])
+    }catch(e){}
+  }
+
+
     const updateStats = async() => {
 
-    analyticsContract.generalStats(ihelpAddress, 0, 1000).then((d) => {
+      let numberOfCharities = 500;
 
-        console.log('generalStats', d)
+      let totalHelpers=0;
+      let totalCharities=0;
+      let totalInterest=0;
+      let totalTvl=0;
 
-        // const totalHelpers = commafy(parseFloat(d['totalHelpers']).toFixed(0))
-        // const totalCharities = commafy(parseFloat(d['totalCharities']).toFixed(0))
-        // const totalInterest = commafy(parseFloat(utils.formatUnits(d['totalInterestGenerated'], 18)).toFixed(0))
-        // const totalTvl = commafy(parseFloat(utils.formatUnits(d['totalValueLocked'], 18)).toFixed(0))
+      let BATCH_SIZE = 50;
+      if (process.env.NODE_ENV === 'development') {
+        BATCH_SIZE = 30;
+      }
+      let index = 0;
+      for (let i = index; i < numberOfCharities; i = i + BATCH_SIZE) {
 
-        setTotalInterest(commafy(parseFloat(utils.formatUnits(d['totalInterestGenerated'], 18)).toFixed(2)))
-        setTvl(commafy(parseFloat(utils.formatUnits(d['totalValueLocked'], 18)).toFixed(0)))
-        setTotalCharities(commafy(parseFloat(d['totalCharities']).toFixed(0)))
-        setTotalHelpers(commafy(parseFloat(d['totalHelpers']).toFixed(0)))
+        // console.log(i,'/',numberOfCharities);
+
+        try {
+          const d = await analyticsContract.generalStats(ihelpAddress, i, BATCH_SIZE)
+
+          // make this non-additive due to calling outside limit paganation
+          totalHelpers = parseFloat(d['totalHelpers'])
+          
+          // increment these values from paganation
+          totalCharities += parseFloat(d['totalCharities'])
+          totalInterest += parseFloat(utils.formatUnits(d['totalInterestGenerated'], 18))
+          totalTvl += parseFloat(utils.formatUnits(d['totalValueLocked'], 18))
+        }catch(e){}
+
+      }
+
+      totalHelpers = commafy(totalHelpers.toFixed(0))
+      totalCharities = commafy(totalCharities.toFixed(0))
+      totalInterest = commafy(totalInterest.toFixed(2))
+      totalTvl = commafy(totalTvl.toFixed(0))
+
+      setTotalHelpers(totalHelpers)
+      setTotalCharities(totalCharities)
+      setTotalInterest(totalInterest)
+      setTvl(totalTvl)
+
+      localStorage.setItem("generalStats", JSON.stringify({
+        'totalHelpers': totalHelpers,
+        'totalCharities': totalCharities,
+        'totalInterest': totalInterest,
+        'totalTvl': totalTvl
+      }));
+
+
+    // analyticsContract.generalStats(ihelpAddress, 0, 1000).then((d) => {
+
+    //     console.log('generalStats', d)
+
+    //     // const totalHelpers = commafy(parseFloat(d['totalHelpers']).toFixed(0))
+    //     // const totalCharities = commafy(parseFloat(d['totalCharities']).toFixed(0))
+    //     // const totalInterest = commafy(parseFloat(utils.formatUnits(d['totalInterestGenerated'], 18)).toFixed(0))
+    //     // const totalTvl = commafy(parseFloat(utils.formatUnits(d['totalValueLocked'], 18)).toFixed(0))
+
+    //     setTotalInterest(commafy(parseFloat(utils.formatUnits(d['totalInterestGenerated'], 18)).toFixed(2)))
+    //     setTvl(commafy(parseFloat(utils.formatUnits(d['totalValueLocked'], 18)).toFixed(0)))
+    //     setTotalCharities(commafy(parseFloat(d['totalCharities']).toFixed(0)))
+    //     setTotalHelpers(commafy(parseFloat(d['totalHelpers']).toFixed(0)))
         
-        setTimeout(()=>{
-          updateStats();
-        },6000);
+    //     setTimeout(()=>{
+    //       updateStats();
+    //     },6000);
         
-    })
+    // })
 
 /*
       let url = `https://avalanche.ihelp.finance/api/v1/data/stats`;
@@ -1442,8 +1505,9 @@ const analyticsContract = new ethers.Contract(analyticsAbi['address'], analytics
 */
 
     }
-    updateStats();
 
+    updateStats()
+ 
 
   }, []);
 
